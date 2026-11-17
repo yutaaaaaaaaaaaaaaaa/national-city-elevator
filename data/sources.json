@@ -1,0 +1,179 @@
+{
+  "dataset": "national-city-elevator",
+  "schema_version": "1.0",
+  "policy": "政府・自治体等の公式資料のみ。推測値・民間推計値で補完しない。",
+  "notice": "このファイルは出典調査台帳であり、公式統計の数値データではありません。地域単位・年度・定義・欠測を確認後、cities.jsonに数値を登録します。",
+  "criteria_sources": [
+    {
+      "criterion_id": 1,
+      "criterion": "人口",
+      "candidate_official_source": "総務省統計局・令和7年国勢調査 人口等基本集計",
+      "reference_year_candidate": 2025,
+      "official_url": "https://www.stat.go.jp/data/kokusei/2025/kekka.html",
+      "verification_note": "市区町村別総人口",
+      "status": "出典候補・数値未収集"
+    },
+    {
+      "criterion_id": 2,
+      "criterion": "人口増減率",
+      "candidate_official_source": "総務省統計局・令和7年国勢調査 人口等基本集計",
+      "reference_year_candidate": 2025,
+      "official_url": "https://www.stat.go.jp/data/kokusei/2025/kekka.html",
+      "verification_note": "2020年人口を2025年境域に組替えた5年間人口増減率",
+      "status": "出典候補・数値未収集"
+    },
+    {
+      "criterion_id": 3,
+      "criterion": "昼夜間人口比率",
+      "candidate_official_source": "総務省統計局・令和2年国勢調査 従業地・通学地集計",
+      "reference_year_candidate": 2020,
+      "official_url": "https://www.e-stat.go.jp/stat-search/database?statdisp_id=0003454524",
+      "verification_note": "2025年調査の関連結果は公表待ち。定義と最新年を確認",
+      "status": "出典候補・数値未収集"
+    },
+    {
+      "criterion_id": 4,
+      "criterion": "事業所数",
+      "candidate_official_source": "総務省統計局・令和6年経済センサス‐基礎調査",
+      "reference_year_candidate": 2024,
+      "official_url": "https://www.e-stat.go.jp/index.php/stat-search/database?data=1&layout=dataset&metadata=1&page=1&statdisp_id=0004040098&toukei=00200552",
+      "verification_note": "民営事業所数。公営を含めるか統一",
+      "status": "出典候補・数値未収集"
+    },
+    {
+      "criterion_id": 5,
+      "criterion": "人口密度",
+      "candidate_official_source": "総務省統計局・令和7年国勢調査／国土地理院面積調",
+      "reference_year_candidate": 2025,
+      "official_url": "https://www.e-stat.go.jp/stat-search/database?layout=dataset&query=%E9%83%BD%E9%81%93%E5%BA%9C%E7%9C%8C%E9%9D%A2%E7%A9%8D",
+      "verification_note": "公表値を優先。必要時は人口÷面積",
+      "status": "出典候補・数値未収集"
+    },
+    {
+      "criterion_id": 6,
+      "criterion": "平均年齢",
+      "candidate_official_source": "総務省統計局・国勢調査 年齢別人口",
+      "reference_year_candidate": 2020,
+      "official_url": "https://www.stat.go.jp/data/chiri/map/c_koku/nenrei/index.html",
+      "verification_note": "令和2年市区町村別平均年齢資料。全都市同一表の確認中",
+      "status": "出典候補・数値未収集"
+    },
+    {
+      "criterion_id": 7,
+      "criterion": "平均失業率",
+      "candidate_official_source": "総務省統計局・令和2年国勢調査 労働力状態",
+      "reference_year_candidate": 2020,
+      "official_url": "https://www.stat.go.jp/data/chiri/map/c_koku/syugyo/index.html",
+      "verification_note": "完全失業者÷労働力人口。労働力調査の市区町村値とは混同しない",
+      "status": "出典候補・数値未収集"
+    },
+    {
+      "criterion_id": 8,
+      "criterion": "平均寿命",
+      "candidate_official_source": "厚生労働省・市区町村別生命表",
+      "reference_year_candidate": null,
+      "official_url": "https://www.mhlw.go.jp/toukei/saikin/hw/life/",
+      "verification_note": "最新回・男女別値・単一指標への集約定義を確認",
+      "status": "出典候補・数値未収集"
+    },
+    {
+      "criterion_id": 9,
+      "criterion": "外国人住民割合",
+      "candidate_official_source": "総務省・住民基本台帳に基づく人口等調査",
+      "reference_year_candidate": 2026,
+      "official_url": "https://www.e-stat.go.jp/stat-search/files?layout=dataset&stat_infid=000040479057",
+      "verification_note": "外国人住民数÷同一基準日の総人口",
+      "status": "出典候補・数値未収集"
+    },
+    {
+      "criterion_id": 10,
+      "criterion": "財政力指数",
+      "candidate_official_source": "総務省・地方財政状況調査／市町村別決算状況調",
+      "reference_year_candidate": null,
+      "official_url": "https://www.soumu.go.jp/iken/zaisei.html",
+      "verification_note": "単年度値か3か年平均か、区単位の公表有無を確認",
+      "status": "出典候補・数値未収集"
+    },
+    {
+      "criterion_id": 11,
+      "criterion": "生産年齢人口比率",
+      "candidate_official_source": "総務省統計局・令和7年国勢調査 年齢別人口",
+      "reference_year_candidate": 2025,
+      "official_url": "https://www.stat.go.jp/data/kokusei/2025/kekka.html",
+      "verification_note": "15～64歳人口÷総人口",
+      "status": "出典候補・数値未収集"
+    },
+    {
+      "criterion_id": 12,
+      "criterion": "65歳以上人口割合",
+      "candidate_official_source": "総務省統計局・令和7年国勢調査 年齢別人口",
+      "reference_year_candidate": 2025,
+      "official_url": "https://www.stat.go.jp/data/kokusei/2025/kekka.html",
+      "verification_note": "65歳以上人口÷総人口",
+      "status": "出典候補・数値未収集"
+    },
+    {
+      "criterion_id": 13,
+      "criterion": "第三次産業就業者割合",
+      "candidate_official_source": "総務省統計局・令和2年国勢調査 就業状態等",
+      "reference_year_candidate": 2020,
+      "official_url": "https://www.stat.go.jp/data/chiri/map/c_koku/syugyo/index.html",
+      "verification_note": "常住地・従業地のどちらかを統一",
+      "status": "出典候補・数値未収集"
+    },
+    {
+      "criterion_id": 14,
+      "criterion": "製造品出荷額",
+      "candidate_official_source": "総務省・経済産業省・経済構造実態調査等",
+      "reference_year_candidate": null,
+      "official_url": "https://www.meti.go.jp/statistics/tyo/kougyo/",
+      "verification_note": "市区町村・行政区別の公表範囲、秘匿値を確認",
+      "status": "出典候補・数値未収集"
+    },
+    {
+      "criterion_id": 15,
+      "criterion": "人口1万人あたり大学生数",
+      "candidate_official_source": "文部科学省・学校基本調査",
+      "reference_year_candidate": null,
+      "official_url": "https://www.mext.go.jp/b_menu/toukei/chousa01/kihon/",
+      "verification_note": "学校所在地別の市区町村学生数の公表範囲を確認",
+      "status": "出典候補・数値未収集"
+    },
+    {
+      "criterion_id": 16,
+      "criterion": "他市町村への通勤・通学者割合",
+      "candidate_official_source": "総務省統計局・令和2年国勢調査 従業地・通学地集計",
+      "reference_year_candidate": 2020,
+      "official_url": "https://www.e-stat.go.jp/stat-search/database?statdisp_id=0003454524",
+      "verification_note": "他市区町村への通勤通学者÷対象常住地人口の分母定義を統一",
+      "status": "出典候補・数値未収集"
+    },
+    {
+      "criterion_id": 17,
+      "criterion": "2050年人口指数",
+      "candidate_official_source": "国立社会保障・人口問題研究所・地域別将来推計人口（令和5年推計）",
+      "reference_year_candidate": 2050,
+      "official_url": "https://www.ipss.go.jp/pp-shicyoson/j/shicyoson23/2gaiyo_hyo/gaiyo.asp",
+      "verification_note": "2020年人口=100。対象地域の例外を確認",
+      "status": "出典候補・数値未収集"
+    },
+    {
+      "criterion_id": 18,
+      "criterion": "人口1000人あたり新設住宅着工数",
+      "candidate_official_source": "国土交通省・建築着工統計／住宅着工統計",
+      "reference_year_candidate": null,
+      "official_url": "https://www.mlit.go.jp/sogoseisaku/jouhouka/sosei_jouhouka_tk4_000002.html",
+      "verification_note": "市区町村別の公表範囲を確認。都道府県値で代用しない",
+      "status": "出典候補・数値未収集"
+    },
+    {
+      "criterion_id": 19,
+      "criterion": "一人当たり課税対象所得",
+      "candidate_official_source": "総務省・市町村税課税状況等の調",
+      "reference_year_candidate": null,
+      "official_url": "https://www.soumu.go.jp/main_sosiki/jichi_zeisei/czaisei/czaisei_seido/ichiran.html",
+      "verification_note": "分母（納税義務者数か人口か）と行政区単位を確認",
+      "status": "出典候補・数値未収集"
+    }
+  ]
+}

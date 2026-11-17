@@ -1,0 +1,252 @@
+
+/* =========================
+   全国128都市エレベーター選手権
+   基本デザイン
+========================= */
+
+:root {
+  --navy: #101b32;
+  --navy-light: #1b2b49;
+  --gold: #d8ae55;
+  --background: #f3f5f9;
+  --white: #ffffff;
+  --text: #202b3c;
+  --muted: #758197;
+  --border: #e2e7ef;
+  --success: #23875b;
+  --danger: #c74747;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Noto Sans JP",
+    "Yu Gothic",
+    sans-serif;
+  background: var(--background);
+  color: var(--text);
+  line-height: 1.7;
+}
+
+/* ヘッダー */
+
+.site-header {
+  background: linear-gradient(
+    135deg,
+    var(--navy),
+    var(--navy-light)
+  );
+  color: var(--white);
+  padding: 32px 20px;
+  border-bottom: 4px solid var(--gold);
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 28px;
+  letter-spacing: 2px;
+}
+
+.site-header p {
+  margin: 4px 0 0;
+  color: var(--gold);
+  font-size: 17px;
+  font-weight: bold;
+}
+
+/* メイン */
+
+.container {
+  width: min(1100px, 92%);
+  margin: 32px auto;
+}
+
+.welcome {
+  margin-bottom: 28px;
+}
+
+.welcome h2 {
+  margin-bottom: 5px;
+  font-size: 25px;
+}
+
+.welcome p {
+  color: var(--muted);
+  margin-top: 0;
+}
+
+/* 統計カード */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.stat-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 3px 12px rgba(16, 27, 50, 0.04);
+}
+
+.stat-card span {
+  display: block;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.stat-card strong {
+  display: block;
+  color: var(--navy);
+  font-size: 30px;
+  margin-top: 5px;
+}
+
+/* メニュー */
+
+.menu-section {
+  margin-bottom: 40px;
+}
+
+.menu-section h2,
+.notice h2 {
+  font-size: 21px;
+  border-left: 5px solid var(--gold);
+  padding-left: 12px;
+  margin-bottom: 18px;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.menu-card {
+  text-align: left;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px;
+  cursor: pointer;
+  transition: 0.2s;
+  color: var(--text);
+}
+
+.menu-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--gold);
+  box-shadow: 0 6px 18px rgba(16, 27, 50, 0.08);
+}
+
+.menu-card span {
+  display: block;
+  color: var(--gold);
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.menu-card strong {
+  display: block;
+  font-size: 16px;
+  margin: 8px 0;
+}
+
+.menu-card small {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* 大会規定 */
+
+.notice {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.notice ul {
+  padding-left: 22px;
+}
+
+.notice li {
+  padding: 4px 0;
+}
+
+/* フッター */
+
+footer {
+  background: var(--navy);
+  color: var(--white);
+  text-align: center;
+  padding: 25px 15px;
+  margin-top: 50px;
+}
+
+footer p {
+  margin: 0;
+  font-weight: bold;
+}
+
+footer small {
+  color: #b8c2d4;
+}
+
+/* スマートフォン対応 */
+
+@media (max-width: 700px) {
+  .site-header h1 {
+    font-size: 23px;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .stat-card {
+    padding: 15px;
+  }
+
+  .stat-card strong {
+    font-size: 25px;
+  }
+
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .menu-card {
+    padding: 15px;
+  }
+
+  .menu-card strong {
+    font-size: 14px;
+  }
+
+  .container {
+    margin-top: 22px;
+  }
+}
+
+@media (max-width: 360px) {
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+}

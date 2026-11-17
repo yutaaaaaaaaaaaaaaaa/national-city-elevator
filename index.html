@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="全国128都市エレベーター選手権">
+  <title>全国128都市エレベーター選手権</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <h1>全国128都市</h1>
+      <p>エレベーター選手権</p>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="welcome">
+      <h2>大会管理本部</h2>
+      <p>全国128都市が頂点を目指す、終わりなきリーグ戦。</p>
+    </section>
+
+    <section class="stats">
+      <div class="stat-card">
+        <span>参加都市</span>
+        <strong id="city-count">128</strong>
+      </div>
+      <div class="stat-card">
+        <span>リーグ数</span>
+        <strong>16</strong>
+      </div>
+      <div class="stat-card">
+        <span>評価項目</span>
+        <strong>19</strong>
+      </div>
+      <div class="stat-card">
+        <span>シーズン</span>
+        <strong id="season-number">1</strong>
+      </div>
+    </section>
+
+    <section class="menu-section">
+      <h2>大会メニュー</h2>
+
+      <div class="menu-grid">
+        <button class="menu-card" data-page="cities">
+          <span>01</span>
+          <strong>都市一覧・登録</strong>
+          <small>128都市の情報を管理</small>
+        </button>
+
+        <button class="menu-card" data-page="lottery">
+          <span>02</span>
+          <strong>リーグ抽選</strong>
+          <small>16リーグを完全抽選</small>
+        </button>
+
+        <button class="menu-card" data-page="matches">
+          <span>03</span>
+          <strong>試合・対戦結果</strong>
+          <small>19項目で勝敗を判定</small>
+        </button>
+
+        <button class="menu-card" data-page="standings">
+          <span>04</span>
+          <strong>リーグ順位表</strong>
+          <small>各リーグの順位を確認</small>
+        </button>
+
+        <button class="menu-card" data-page="promotion">
+          <span>05</span>
+          <strong>昇格・降格</strong>
+          <small>次シーズンの所属を決定</small>
+        </button>
+
+        <button class="menu-card" data-page="history">
+          <span>06</span>
+          <strong>大会履歴</strong>
+          <small>シーズンごとの記録</small>
+        </button>
+      </div>
+    </section>
+
+    <section class="notice">
+      <h2>大会基本規定</h2>
+      <ul>
+        <li>参加都市：128都市</li>
+        <li>リーグ構成：16リーグ×8都市</li>
+        <li>試合方式：総当たり1回戦</li>
+        <li>昇格：各リーグ上位3都市</li>
+        <li>降格：各リーグ下位3都市</li>
+        <li>残留：各リーグ4位・5位</li>
+        <li>評価項目：19項目</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>全国128都市エレベーター選手権</p>
+    <small>National City Elevator Championship</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

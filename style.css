@@ -44,3 +44,369 @@ main{padding:22px 16px}.panel{background:white;border:1px solid var(--line);bord
     font-size: 13px;
   }
 }
+/* ===== リーグ表のレイアウト修正版 ===== */
+
+#leagues {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 28px !important;
+  width: 100%;
+  align-items: start;
+}
+
+.league-card {
+  width: 100% !important;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 22px;
+  margin: 0;
+  border: 1px solid #d8dee8;
+  border-radius: 14px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.league-card h3 {
+  font-size: 22px;
+  margin: 0 0 18px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #e5eaf1;
+}
+
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.league-card table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  table-layout: auto;
+  font-size: 15px;
+}
+
+.league-card th {
+  background: #edf2f8;
+  color: #263548;
+  font-weight: 700;
+  white-space: nowrap;
+  padding: 13px 12px;
+  text-align: center;
+  border-bottom: 2px solid #cbd5e1;
+}
+
+.league-card td {
+  padding: 13px 12px;
+  text-align: center;
+  border-bottom: 1px solid #e2e8f0;
+  white-space: nowrap;
+}
+
+.league-card tbody tr:nth-child(even) {
+  background: #f7f9fc;
+}
+
+.league-card tbody tr:hover {
+  background: #edf4ff;
+}
+
+.league-card details {
+  margin-top: 18px;
+}
+
+.league-card summary {
+  cursor: pointer;
+  font-weight: 700;
+  padding: 10px;
+  border-radius: 8px;
+  background: #edf2f8;
+}
+
+.match-card {
+  margin-top: 12px;
+  padding: 14px;
+  border: 1px solid #dce3ed;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+.match-score {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 16px;
+}
+
+.match-score span {
+  font-size: 20px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.match-winner {
+  margin-top: 8px;
+  font-weight: 700;
+  color: #2563a6;
+}
+
+@media (max-width: 700px) {
+  .league-card {
+    padding: 12px;
+  }
+
+  .league-card h3 {
+    font-size: 19px;
+  }
+
+  .league-card table {
+    font-size: 13px;
+  }
+}
+/* ===== リーグ表のレイアウト修正版 ===== */
+
+#leagues {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 28px !important;
+  width: 100%;
+  align-items: start;
+}
+
+.league-card {
+  width: 100% !important;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 22px;
+  margin: 0;
+  border: 1px solid #d8dee8;
+  border-radius: 14px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.league-card h3 {
+  font-size: 22px;
+  margin: 0 0 18px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #e5eaf1;
+}
+
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.league-card table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  table-layout: auto;
+  font-size: 15px;
+}
+
+.league-card th {
+  background: #edf2f8;
+  color: #263548;
+  font-weight: 700;
+  white-space: nowrap;
+  padding: 13px 12px;
+  text-align: center;
+  border-bottom: 2px solid #cbd5e1;
+}
+
+.league-card td {
+  padding: 13px 12px;
+  text-align: center;
+  border-bottom: 1px solid #e2e8f0;
+  white-space: nowrap;
+}
+
+.league-card tbody tr:nth-child(even) {
+  background: #f7f9fc;
+}
+
+.league-card tbody tr:hover {
+  background: #edf4ff;
+}
+
+.league-card details {
+  margin-top: 18px;
+}
+
+.league-card summary {
+  cursor: pointer;
+  font-weight: 700;
+  padding: 10px;
+  border-radius: 8px;
+  background: #edf2f8;
+}
+
+.match-card {
+  margin-top: 12px;
+  padding: 14px;
+  border: 1px solid #dce3ed;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+.match-score {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 16px;
+}
+
+.match-score span {
+  font-size: 20px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.match-winner {
+  margin-top: 8px;
+  font-weight: 700;
+  color: #2563a6;
+}
+
+@media (max-width: 700px) {
+  .league-card {
+    padding: 12px;
+  }
+
+  .league-card h3 {
+    font-size: 19px;
+  }
+
+  .league-card table {
+    font-size: 13px;
+  }
+}
+/* ===== リーグ表のレイアウト修正版 ===== */
+
+#leagues {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 28px !important;
+  width: 100%;
+  align-items: start;
+}
+
+.league-card {
+  width: 100% !important;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 22px;
+  margin: 0;
+  border: 1px solid #d8dee8;
+  border-radius: 14px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.league-card h3 {
+  font-size: 22px;
+  margin: 0 0 18px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #e5eaf1;
+}
+
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.league-card table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  table-layout: auto;
+  font-size: 15px;
+}
+
+.league-card th {
+  background: #edf2f8;
+  color: #263548;
+  font-weight: 700;
+  white-space: nowrap;
+  padding: 13px 12px;
+  text-align: center;
+  border-bottom: 2px solid #cbd5e1;
+}
+
+.league-card td {
+  padding: 13px 12px;
+  text-align: center;
+  border-bottom: 1px solid #e2e8f0;
+  white-space: nowrap;
+}
+
+.league-card tbody tr:nth-child(even) {
+  background: #f7f9fc;
+}
+
+.league-card tbody tr:hover {
+  background: #edf4ff;
+}
+
+.league-card details {
+  margin-top: 18px;
+}
+
+.league-card summary {
+  cursor: pointer;
+  font-weight: 700;
+  padding: 10px;
+  border-radius: 8px;
+  background: #edf2f8;
+}
+
+.match-card {
+  margin-top: 12px;
+  padding: 14px;
+  border: 1px solid #dce3ed;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+.match-score {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 16px;
+}
+
+.match-score span {
+  font-size: 20px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.match-winner {
+  margin-top: 8px;
+  font-weight: 700;
+  color: #2563a6;
+}
+
+@media (max-width: 700px) {
+  .league-card {
+    padding: 12px;
+  }
+
+  .league-card h3 {
+    font-size: 19px;
+  }
+
+  .league-card table {
+    font-size: 13px;
+  }
+}

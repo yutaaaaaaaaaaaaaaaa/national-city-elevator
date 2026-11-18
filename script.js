@@ -150,29 +150,32 @@ function shuffle(array) {
 }
 
 function makeDraw() {
-  const shuffled = shuffle(dataset.cities.map(c => c.city_id));
+  const shuffled = [...allCities];
+
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
 
   const leagues = [];
 
-  for (let i = 0; i < LEAGUE_COUNT; i++) {
+  for (let i = 0; i < 16; i++) {
     leagues.push(
-      shuffled.slice(i * CITIES_PER_LEAGUE, (i + 1) * CITIES_PER_LEAGUE)
+      shuffled.slice(i * 8, (i + 1) * 8).map(city => city.city_id)
     );
   }
 
-  validateLeagues(leagues);
+  if (!validateLeagues(leagues)) {
+    throw new Error("抽選結果に重複または不足があります。");
+  }
 
-  state = {
-    season: 1,
-    leagues,
-    results: null,
-    completed: false
-  };
+  state.leagues = leagues;
+  state.results = null;
+  state.season = 1;
+  state.completed = false;
 
   saveState();
   render();
-
-  setStatus("第1シーズンの抽選が完了しました。");
 }
 
 /* -------------------------

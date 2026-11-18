@@ -549,25 +549,11 @@ function renderCriteria() {
   `).join(" ");
 }
 
+
 function renderMatch(match) {
   const aName = cityName(match.a);
   const bName = cityName(match.b);
   const winnerName = cityName(match.winner);
-
-  const details = match.breakdown.map(item => {
-    let resultText = "引き分け";
-    if (item.winner === "A") resultText = aName + " の勝ち";
-    if (item.winner === "B") resultText = bName + " の勝ち";
-
-    return `
-      <tr>
-        <td>${escapeHtml(item.name)}</td>
-        <td>${formatValue(item.valueA)} ${escapeHtml(item.unit)}</td>
-        <td>${formatValue(item.valueB)} ${escapeHtml(item.unit)}</td>
-        <td>${escapeHtml(resultText)}</td>
-      </tr>
-    `;
-  }).join("");
 
   return `
     <div class="match-card">
@@ -576,28 +562,9 @@ function renderMatch(match) {
         <span>${match.scoreA} - ${match.scoreB}</span>
         <strong>${escapeHtml(bName)}</strong>
       </div>
-
       <div class="match-winner">
         勝者：${escapeHtml(winnerName)}
       </div>
-
-      <details>
-        <summary>19項目の試合内容を見る</summary>
-        <p>決着方法：${escapeHtml(match.decider)}</p>
-        <div class="table-scroll">
-          <table>
-            <thead>
-              <tr>
-                <th>評価項目</th>
-                <th>${escapeHtml(aName)}</th>
-                <th>${escapeHtml(bName)}</th>
-                <th>判定</th>
-              </tr>
-            </thead>
-            <tbody>${details}</tbody>
-          </table>
-        </div>
-      </details>
     </div>
   `;
 }

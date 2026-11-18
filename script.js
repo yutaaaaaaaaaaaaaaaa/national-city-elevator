@@ -1,4 +1,3 @@
-
 const STORAGE_KEY = "national-city-elevator-v3";
 
 const LEAGUE_COUNT = 16;

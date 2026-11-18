@@ -93,7 +93,6 @@ function validateDataset() {
 ------------------------- */
 
 function validateLeagues(leagues) {
-function validateLeagues(leagues) {
   if (!Array.isArray(leagues) || leagues.length !== 16) {
     throw new Error("リーグ数が16ではありません。");
   }
@@ -386,48 +385,100 @@ function advance() {
     return;
   }
 
-  const rankings = state.results.map(result => result.standings);
-  const nextLeagues = [];
-
-  // 第1リーグ：残留5都市＋第2リーグから昇格3都市
-  nextLeagues.push([
-    ...rankings[0].slice(0, 5).map(row => row.id),
-    ...rankings[1].slice(-3).map(row => row.id)
-  ]);
-
-  // 第2～15リーグ
-  for (let i = 1; i < 15; i++) {
-    nextLeagues.push([
-      ...rankings[i - 1].slice(-3).map(row => row.id),
-      ...rankings[i].slice(3, 5).map(row => row.id),
-      ...rankings[i + 1].slice(0, 3).map(row => row.id)
-    ]);
-  }
-
-  // 第16リーグ：第15リーグから降格3都市＋残留5都市
-  nextLeagues.push([
-    ...rankings[14].slice(-3).map(row => row.id),
-    ...rankings[15].slice(3, 8).map(row => row.id)
-  ]);
-
   try {
+    // 現在の構成を確認
+    validateLeagues(state.leagues);
+
+    const rankings = state.results.map(result => {
+      if (!Array.isArray(result.standings) ||
+          result.standings.length !== 8) {
+        throw new Error("順位表のデータが不正です。");
+      }
+
+      const ids = result.standings.map(row => row.id);
+
+      if (new Set(ids).size !== 8) {
+        throw new Error("順位表内に重複した都市があります。");
+      }
+
+      return result.standings;
+    });
+
+    // 全リーグの順位表が現在の所属都市と一致するか確認
+    for (let i = 0; i < 16; i++) {
+      const current = new Set(state.leagues[i]);
+      const ranked = new Set(rankings[i].map(row => row.id));
+
+      if (current.size !== 8 ||
+          ranked.size !== 8 ||
+          [...current].some(id => !ranked.has(id))) {
+        throw new Error(`第${i + 1}リーグの順位表と所属都市が一致しません。`);
+      }
+    }
+
+    const relegated = rankings.map(rows =>
+      rows.slice(-3).map(row => row.id)
+    );
+
+    const promoted = rankings.map(rows =>
+      rows.slice(0, 3).map(row => row.id)
+    );
+
+    const nextLeagues = [];
+
+    // 第1リーグ
+    nextLeagues.push([
+      ...rankings[0].slice(0, 5).map(row => row.id),
+      ...promoted[1]
+    ]);
+
+    // 第2～15リーグ
+    for (let i = 1; i < 15; i++) {
+      nextLeagues.push([
+        ...relegated[i - 1],
+        ...rankings[i].slice(3, 5).map(row => row.id),
+        ...promoted[i + 1]
+      ]);
+    }
+
+    // 第16リーグ
+    nextLeagues.push([
+      ...relegated[14],
+      ...rankings[15].slice(3, 8).map(row => row.id)
+    ]);
+
+    // 更新前に新しい構成を完全検査
     validateLeagues(nextLeagues);
+
+    // 元の128都市と新しい128都市が完全一致するか確認
+    const oldIds = state.leagues.flat().sort();
+    const newIds = nextLeagues.flat().sort();
+
+    if (JSON.stringify(oldIds) !== JSON.stringify(newIds)) {
+      throw new Error("昇格・降格によって都市の所属が変化しています。更新を中止しました。");
+    }
+
+    // 検査に成功した場合だけ更新
+    const nextState = {
+      season: state.season + 1,
+      leagues: nextLeagues,
+      results: null,
+      completed: false
+    };
+
+    state = nextState;
+
+    saveState();
+    render();
+
+    setStatus(
+      `第${state.season}シーズンの準備完了！128都市の重複・欠落はありません。`
+    );
+
   } catch (error) {
+    console.error(error);
     setStatus("昇格・降格を中止しました：" + error.message);
-    return;
   }
-
-  state.season++;
-  state.leagues = nextLeagues;
-  state.results = null;
-  state.completed = false;
-
-  saveState();
-  render();
-
-  setStatus(
-    `昇格・降格が完了しました。第${state.season}シーズンの準備ができました。`
-  );
 }
 
 /* -------------------------

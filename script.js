@@ -133,7 +133,6 @@ function validateLeagues(leagues) {
 
   return true;
 }
-}
 
 /* -------------------------
    抽選

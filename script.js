@@ -93,38 +93,47 @@ function validateDataset() {
 ------------------------- */
 
 function validateLeagues(leagues) {
-  if (!Array.isArray(leagues) || leagues.length !== LEAGUE_COUNT) {
+function validateLeagues(leagues) {
+  if (!Array.isArray(leagues) || leagues.length !== 16) {
     throw new Error("リーグ数が16ではありません。");
   }
 
-  const allIds = [];
+  const expectedIds = dataset.cities.map(c => c.city_id);
+  const expectedSet = new Set(expectedIds);
+  const occurrences = new Map();
 
-  for (let i = 0; i < leagues.length; i++) {
-    if (!Array.isArray(leagues[i]) ||
-        leagues[i].length !== CITIES_PER_LEAGUE) {
+  for (let i = 0; i < 16; i++) {
+    if (!Array.isArray(leagues[i]) || leagues[i].length !== 8) {
       throw new Error(`第${i + 1}リーグの都市数が8ではありません。`);
     }
 
-    allIds.push(...leagues[i]);
-  }
+    for (const id of leagues[i]) {
+      if (!expectedSet.has(id)) {
+        throw new Error(`登録されていない都市ID：${id}`);
+      }
 
-  if (allIds.length !== EXPECTED_CITIES) {
-    throw new Error("リーグ全体の都市数が128ではありません。");
-  }
-
-  if (new Set(allIds).size !== EXPECTED_CITIES) {
-    throw new Error("リーグ間で都市が重複しているか、欠落しています。");
-  }
-
-  const knownIds = new Set(dataset.cities.map(c => c.city_id));
-
-  for (const id of allIds) {
-    if (!knownIds.has(id)) {
-      throw new Error(`登録されていない都市IDがあります：${id}`);
+      occurrences.set(id, (occurrences.get(id) || 0) + 1);
     }
   }
 
+  const duplicates = [...occurrences.entries()]
+    .filter(([id, count]) => count > 1)
+    .map(([id, count]) => `${cityName(id)}（${count}回）`);
+
+  const missing = expectedIds
+    .filter(id => !occurrences.has(id))
+    .map(id => cityName(id));
+
+  if (duplicates.length > 0 || missing.length > 0) {
+    throw new Error(
+      "都市の重複・欠落を検出しました。\n" +
+      "重複：" + (duplicates.join("、") || "なし") + "\n" +
+      "欠落：" + (missing.join("、") || "なし")
+    );
+  }
+
   return true;
+}
 }
 
 /* -------------------------

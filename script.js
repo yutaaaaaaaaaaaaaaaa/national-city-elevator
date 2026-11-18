@@ -427,9 +427,9 @@ function advance() {
 
     // 第1リーグ
     nextLeagues.push([
-      ...rankings[0].slice(0, 5).map(row => row.id),
-      ...promoted[1]
-    ]);
+  ...rankings[0].slice(0, 5).map(row => row.id),
+  ...rankings[1].slice(0, 3).map(row => row.id)
+]);
 
     // 第2～15リーグ
     for (let i = 1; i < 15; i++) {

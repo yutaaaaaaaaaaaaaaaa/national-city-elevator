@@ -149,34 +149,35 @@ function shuffle(array) {
 }
 
 function makeDraw() {
-  const shuffled = [...dataset.cities];
-
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  if (!dataset || !Array.isArray(dataset.cities)) {
+    throw new Error("都市データが読み込まれていません。");
   }
+
+  const shuffled = shuffle(dataset.cities);
 
   const leagues = [];
 
-  for (let i = 0; i < 16; i++) {
+  for (let i = 0; i < LEAGUE_COUNT; i++) {
     leagues.push(
-      shuffled.slice(i * 8, (i + 1) * 8).map(city => city.city_id)
+      shuffled
+        .slice(i * CITIES_PER_LEAGUE, (i + 1) * CITIES_PER_LEAGUE)
+        .map(city => city.city_id)
     );
   }
 
-  if (!validateLeagues(leagues)) {
-    throw new Error("抽選結果に重複または不足があります。");
-  }
+  validateLeagues(leagues);
 
-  state.leagues = leagues;
-  state.results = null;
-  state.season = 1;
-  state.completed = false;
+  state = {
+    season: 1,
+    leagues,
+    results: null,
+    completed: false
+  };
 
   saveState();
   render();
+  setStatus("抽選が完了しました！");
 }
-
 /* -------------------------
    各都市の評価順位
    ※異なる単位の数値を直接合計しない
